@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>
+        sign up form
+    </title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <link rel="stylesheet" href="style signup.css">
+</head>
+
+<body>
+    <h1>let's poll</h1>
+    <div class="signup-form">
+        <h1> signup now</h1>
+        <form>
+            <input type="email" placeholder="enter email" id="email"/>
+            <input type="password"  placeholder="enter password" id="password"/>
+            <!--<input type="password" placeholder="confirm password">-->
+            <br>
+            <button type="button" class="signup-btn" onclick="signUp()">sign up</button>
+            <hr>
+            <p class="or">OR</p>
+            <p> existing user?<a href="./login page.html">login now</a></p>
+        </form>
+
+    </div>
+    <script>
+
+        const firebaseConfig = {
+  apiKey: "AIzaSyD8bTBtYyhLygYgwybxS-jNOZY6RobJZNs",
+  authDomain: "polling-website-2f9c0.firebaseapp.com",
+  projectId: "polling-website-2f9c0",
+  storageBucket: "polling-website-2f9c0.appspot.com",
+  messagingSenderId: "884134413015",
+  appId: "1:884134413015:web:e9a8274b839268eebb6692",
+  measurementId: "G-DD7ED8B1ET"
+};
+
+    // Initialize Firebase
+        // firebase.initializeApp(firebaseConfig);
+        const app = firebase.initializeApp(firebaseConfig);
+        // const analytics = getAnalytics(app);
+
+
+        const auth = firebase.auth();
+
+
+        function signUp() {
+
+            var email1 = document.getElementById("email");
+            var password1 = document.getElementById("password");
+            alert(password1.value);
+            const promise = auth.createUserWithEmailAndPassword(email1.value, password1.value);
+            promise.then(u => {
+                alert("Signed Up");
+            })
+            promise.catch(e => alert(e.message));
+    </script>
+    
+</body>
+
+</html>

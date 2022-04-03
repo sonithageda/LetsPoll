@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>
+        login form
+    </title>
+    <link rel="stylesheet" href="style login.css">
+</head>
+
+<body>
+    <h1>let's poll</h1>
+    <div class="login-form">
+        <h1>login now</h1>
+        <form>
+            <input type="email" id="email" placeholder="enter email">
+            <input type="password" id="password" placeholder="enter password">
+            <br>
+            <button type="button" class="login-btn"onclick="signIn()">login</button>
+            <P><a href="forgotpassword.html">forgot password?</a></P>
+            <hr>
+            <p class="or">OR</p>
+            <p>new user?<a href="./sign up.html">sign up </a>now</p>
+        </form>
+
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZlVvC73hkjdQ4wrsn6n5kEXFnKiAa94w",
+            authDomain: "mini-insta-cf48e.firebaseapp.com",
+            projectId: "mini-insta-cf48e",
+            storageBucket: "mini-insta-cf48e.appspot.com",
+            messagingSenderId: "411742918513",
+            appId: "1:411742918513:web:e89e38b8dff2c1bf2148d0"
+        };
+        // Initialize Firebase
+        // firebase.initializeApp(firebaseConfig);
+        const app = firebase.initializeApp(firebaseConfig);
+        // const analytics = getAnalytics(app);
+        const auth = firebase.auth();
+        function signIn()
+        {
+            var email1 = document.getElementById("email");
+            var password1 = document.getElementById("password");
+            alert(email1.value);
+            const promise = auth.signInWithEmailAndPassword(email1.value, password1.value);
+            promise.then(u => {alert("Signed In");})
+            promise.catch(e => alert(e.message));
+        }
+    </script>
+</body>
+
+</html>
